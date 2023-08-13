@@ -4,39 +4,39 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - интернет магазин на C#</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Store.Web.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Интернет-магазин на C#</a>
-            <form class="my-2 my-lg-0" action="@Url.Action("Index", "Search")" method="get">
-                <div>
-                <input class="form-control" type="search" name="query" placeholder="автор или название" />
-                <button class="btn btn-outline-success mx-2 my-sm-0" type="submit">Искать</button>
-                </div>
-            </form>
-            <span class="navbar-text m-lg-auto">
-                @{
-                    Cart cart;
-                    if(!Context.Session.TryGetCart(out cart))
-                    {
-                        cart = new Cart();
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Интернет-магазин на C#</a>
+                <form class="d-flex" action="@Url.Action("Index", "Search")" method="get">
+                    <input class="form-control me-2" type="search" name="query" placeholder="автор или название" />
+                    <button class="btn btn-outline-success" type="submit">Искать</button>
+                </form>
+                <span class="navbar-text m-lg-auto">
+                    @{
+                        Cart cart;
+                        if (!Context.Session.TryGetCart(out cart))
+                        {
+                            cart = new Cart();
+                        }
+
+                        if (cart.Items.Count == 0)
+                        {
+                            @:Корзина пуста
+                        }
+                        else
+                        {
+                            @:Товаров: @cart.Items.Count на сумму: @cart.Amount
+                        }
                     }
 
-                    if(cart.Items.Count==0)
-                    {
-                        @:Корзина пуста
-                    }
-                    else
-                    {
-                        @:Товаров: @cart.Items.Count на сумму: @cart.Amount
-                    }
-                }
-                
-            </span>
+                </span>
+            </div>
         </nav>
     </header>
     <div class="container">
@@ -44,7 +44,7 @@
             @RenderBody()
         </main>
     </div>
-        
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
