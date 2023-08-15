@@ -20,21 +20,15 @@
                 <span class="navbar-text m-lg-auto">
                     @{
                         Cart cart;
-                        if (!Context.Session.TryGetCart(out cart))
+                        if (Context.Session.TryGetCart(out cart)&& cart.TotalCount>0)
                         {
-                            cart = new Cart();
-                        }
-
-                        if (cart.Items.Count == 0)
-                        {
-                            @:Корзина пуста
+                            <a href="@Url.Action("Index","Order")">Товаров @cart.TotalCount на сумму @cart.TotalPrice</a>
                         }
                         else
                         {
-                            @:Товаров: @cart.Items.Count на сумму: @cart.Amount
+                            @:Корзина пуста
                         }
                     }
-
                 </span>
             </div>
         </nav>

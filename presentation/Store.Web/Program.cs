@@ -3,9 +3,10 @@ using Store.Memory;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// AddItem services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IBookRepository, BookRepository>();
+builder.Services.AddSingleton<IOrderRepository, OrderRepository>();
 builder.Services.AddSingleton<BookService>();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>

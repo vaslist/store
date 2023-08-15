@@ -14,6 +14,19 @@ namespace Store.Memory
                 "С programming lenguage", "About programming language", 16.7m)
         };
 
+        public Book[] GetAllByIds(IEnumerable<int> bookIds)
+        {
+            //return books.Where(b=>b.Id in  bookIds).ToArray();
+
+            //var foundBooks = from book in books
+            //                 where bookIds.Contains(book.Id)
+            //                 select book;
+            var foundBooks = from book in books
+                             join bookId in bookIds on book.Id  equals bookId 
+                             select book;
+            return foundBooks.ToArray();
+        }
+
         public Book[] GetAllByIsbn(string isbn)
         {
             return books.Where(b=>b.Isbn == isbn).ToArray();
