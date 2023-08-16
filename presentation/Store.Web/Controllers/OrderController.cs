@@ -22,7 +22,7 @@ namespace Store.Web.Controllers
             this.deliveryServices = deliveryServices;
             this.notificationService = notificationService;
         }
-        //==========
+        
         public IActionResult Index()
         {
             Cart cart;
@@ -35,7 +35,6 @@ namespace Store.Web.Controllers
             return View("Empty");
         }
 
-        //==========
         private OrderModel Map(Order order)
         {
             var bookIds = order.Items.Select(i => i.BookId);
@@ -58,6 +57,7 @@ namespace Store.Web.Controllers
                 TotalPrice = order.TotalPrice
             };
         }
+        
         [HttpPost]
         public IActionResult AddItem(int bookId, int count = 1)
         {
@@ -92,7 +92,6 @@ namespace Store.Web.Controllers
             HttpContext.Session.Set(cart);
         }
 
-        //==========
         private (Order order, Cart cart) GetOrCreateOrderAndCart()
         {
             Order order;
@@ -109,7 +108,6 @@ namespace Store.Web.Controllers
             return (order, cart);
         }
 
-        //==========
         public IActionResult RemoveBook(int id)
         {
             (Order order, Cart cart) = GetOrCreateOrderAndCart();
@@ -165,6 +163,7 @@ namespace Store.Web.Controllers
 
             return Regex.IsMatch(cellPhone, @"^\+?\d{11}$");
         }
+        
         [HttpPost]
         public IActionResult Confirmate(int id, string cellPhone, int code)
         {
@@ -207,6 +206,7 @@ namespace Store.Web.Controllers
 
             return View("DeliveryMethod", model);
         }
+        
         [HttpPost]
         public IActionResult StartDelivery(int id, string uniqueCode)
         {
@@ -217,6 +217,7 @@ namespace Store.Web.Controllers
             
             return View("DeliveryStep", form);
         }
+        
         [HttpPost]
         public IActionResult NextDelivery(int id, string uniqueCode, 
                                           int step,Dictionary<string,string> values) 
