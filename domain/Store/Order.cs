@@ -16,9 +16,14 @@ namespace Store
             get { return items; }
         }
 
+        public string CellPhone { get; set; }
+
+        public OrderDelivery Delivery { get; set; }
+        public OrderPayment Payment { get; set; }
         public int TotalCount => items.Sum(o => o.Count);
 
-        public decimal TotalPrice => items.Sum(o => o.Count * o.Price);
+        public decimal TotalPrice => items.Sum(o => o.Count * o.Price)
+                                            +(Delivery?.Amount ?? 0m);
 
         public Order(int id, IEnumerable<OrderItem> items)
         {
