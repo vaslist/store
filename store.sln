@@ -17,11 +17,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Web", "presentation\S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Tests", "domain\Store.Tests\Store.Tests.csproj", "{CE7F5DAC-FBDD-46CC-86D8-EDA568D78D07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Web.Contractors", "presentation\Store.Web.Contractors\Store.Web.Contractors.csproj", "{203A7328-DB6F-4BDE-B1BC-E62218BA9D3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Web.Contractors", "presentation\Store.Web.Contractors\Store.Web.Contractors.csproj", "{203A7328-DB6F-4BDE-B1BC-E62218BA9D3F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{374EF92E-B825-43E1-9BB1-21B394B75E80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.YandexKassa", "plugins\Store.YandexKassa\Store.YandexKassa.csproj", "{FB0BD4E9-E170-4142-B472-175498C240F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.YandexKassa", "plugins\Store.YandexKassa\Store.YandexKassa.csproj", "{FB0BD4E9-E170-4142-B472-175498C240F7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "application", "application", "{BFDB5BE6-4FA2-4E5F-A4D2-4D02D005550C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Web.App", "application\Store.Web.App\Store.Web.App.csproj", "{365C31EF-A2D5-4496-96E8-69CE46DB25D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +57,10 @@ Global
 		{FB0BD4E9-E170-4142-B472-175498C240F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB0BD4E9-E170-4142-B472-175498C240F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB0BD4E9-E170-4142-B472-175498C240F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{365C31EF-A2D5-4496-96E8-69CE46DB25D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{365C31EF-A2D5-4496-96E8-69CE46DB25D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{365C31EF-A2D5-4496-96E8-69CE46DB25D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{365C31EF-A2D5-4496-96E8-69CE46DB25D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +72,7 @@ Global
 		{CE7F5DAC-FBDD-46CC-86D8-EDA568D78D07} = {276EEA05-1354-42DB-AD71-6AADC1EC6BB2}
 		{203A7328-DB6F-4BDE-B1BC-E62218BA9D3F} = {B028D232-6786-4277-B611-3A6A151763D1}
 		{FB0BD4E9-E170-4142-B472-175498C240F7} = {374EF92E-B825-43E1-9BB1-21B394B75E80}
+		{365C31EF-A2D5-4496-96E8-69CE46DB25D0} = {BFDB5BE6-4FA2-4E5F-A4D2-4D02D005550C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8A0C428E-7BC4-4F84-A875-9DA0CF5DE3EC}
