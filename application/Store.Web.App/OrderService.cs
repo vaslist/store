@@ -204,6 +204,7 @@ namespace Store.Web.App
             else
                 order.Items.Add(book.Id, book.Price, count);
 
+            orderRepository.Update(order);
         }
 
         internal bool TryGetOrder(out Order order)

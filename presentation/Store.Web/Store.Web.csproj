@@ -9,10 +9,15 @@
   <ItemGroup>
     <ProjectReference Include="..\..\application\Store.Web.App\Store.Web.App.csproj" />
     <ProjectReference Include="..\..\domain\Store\Store.csproj" />
+    <ProjectReference Include="..\..\infrastructure\Store.Data.EF\Store.Data.EF.csproj" />
     <ProjectReference Include="..\..\plugins\Store.YandexKassa\Store.YandexKassa.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.9" />
   </ItemGroup>
 

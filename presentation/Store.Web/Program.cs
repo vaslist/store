@@ -2,14 +2,20 @@ using Store;
 using Store.Contractors;
 using Store.Messages;
 using Store.Web.App;
+using Store.Data.EF;
 using Store.Web.Contractors;
 using Store.YandexKassa;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // AddItem services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpContextAccessor();
+
+// получаем строку подключения из файла конфигурации
+string connectionString = builder.Configuration.GetConnectionString("Store");
+builder.Services.AddEfRepositories(connectionString);
 
 builder.Services.AddSingleton<BookService>();
 builder.Services.AddSingleton<OrderService>();
