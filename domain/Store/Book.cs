@@ -22,7 +22,7 @@ public class Book
         Price = price;
     }
 
-    internal static bool IsIsbn(string isbn)
+    public static bool IsIsbn(string isbn)
     {
         if (string.IsNullOrEmpty(isbn)) 
             return false;

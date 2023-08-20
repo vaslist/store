@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Store;
+using Store.Web.App;
 
 namespace Store.Web.Controllers
 {
@@ -13,6 +14,7 @@ namespace Store.Web.Controllers
         public IActionResult Index(string query)
         {
             var books = bookService.GetAllByQuery(query);
+            
             return View(books);
         }
     }
