@@ -169,6 +169,8 @@ namespace Store.Web.App
 
             session.RemoveCart();
 
+            notificationService.StartProcess(order);
+
             return Map(order);
         }
 
