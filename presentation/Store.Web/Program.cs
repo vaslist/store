@@ -6,11 +6,17 @@ using Store.Data.EF;
 using Store.Web.Contractors;
 using Store.YandexKassa;
 using System.Configuration;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Store.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // AddItem services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(options=>
+{
+    options.Filters.Add(typeof(ExceptionFilter));
+});
 builder.Services.AddHttpContextAccessor();
 
 // получаем строку подключения из файла конфигурации
@@ -37,7 +43,7 @@ builder.Services.AddSession(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+//if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
