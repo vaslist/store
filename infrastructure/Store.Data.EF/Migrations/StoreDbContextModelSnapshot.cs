@@ -97,8 +97,8 @@ namespace Store.Data.EF.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("DeliveryDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("DeliveryParameters")
                         .IsRequired()
@@ -113,8 +113,8 @@ namespace Store.Data.EF.Migrations
                         .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("PaymentDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("PaymentParameters")
                         .IsRequired()

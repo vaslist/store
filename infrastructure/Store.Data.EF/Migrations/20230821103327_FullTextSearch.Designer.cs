@@ -11,7 +11,11 @@ using Store.Data.EF;
 namespace Store.Data.EF.Migrations
 {
     [DbContext(typeof(StoreDbContext))]
+<<<<<<<< HEAD:infrastructure/Store.Data.EF/Migrations/20230820182253_FullTextSearch.Designer.cs
     [Migration("20230820182253_FullTextSearch")]
+========
+    [Migration("20230821103327_FullTextSearch")]
+>>>>>>>> 5d6cd5a (Добавить обработку ошибок):infrastructure/Store.Data.EF/Migrations/20230821103327_FullTextSearch.Designer.cs
     partial class FullTextSearch
     {
         /// <inheritdoc />
@@ -100,8 +104,13 @@ namespace Store.Data.EF.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("DeliveryDescription")
+<<<<<<<< HEAD:infrastructure/Store.Data.EF/Migrations/20230820182253_FullTextSearch.Designer.cs
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+========
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+>>>>>>>> 5d6cd5a (Добавить обработку ошибок):infrastructure/Store.Data.EF/Migrations/20230821103327_FullTextSearch.Designer.cs
 
                     b.Property<string>("DeliveryParameters")
                         .IsRequired()
@@ -116,8 +125,13 @@ namespace Store.Data.EF.Migrations
                         .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("PaymentDescription")
+<<<<<<<< HEAD:infrastructure/Store.Data.EF/Migrations/20230820182253_FullTextSearch.Designer.cs
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+========
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+>>>>>>>> 5d6cd5a (Добавить обработку ошибок):infrastructure/Store.Data.EF/Migrations/20230821103327_FullTextSearch.Designer.cs
 
                     b.Property<string>("PaymentParameters")
                         .IsRequired()
