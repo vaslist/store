@@ -1,10 +1,11 @@
 using Store;
 using Store.Contractors;
-using Store.Memory;
 using Store.Messages;
 using Store.Web.App;
+using Store.Data.EF;
 using Store.Web.Contractors;
 using Store.YandexKassa;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,8 +13,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddSingleton<IBookRepository, BookRepository>();
-builder.Services.AddSingleton<IOrderRepository, OrderRepository>();
+// получаем строку подключения из файла конфигурации
+string connectionString = builder.Configuration.GetConnectionString("Store");
+builder.Services.AddEfRepositories(connectionString);
+
 builder.Services.AddSingleton<BookService>();
 builder.Services.AddSingleton<OrderService>();
 builder.Services.AddSingleton<IDeliveryService, PostamateDeliveryService>();

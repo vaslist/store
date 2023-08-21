@@ -14,7 +14,7 @@ namespace Store
     {
         public string UniqueCode { get; }
         public string Description { get; }
-        public decimal Amount { get; } // стоимость доставки
+        public decimal Price { get; } // стоимость доставки
         public IReadOnlyDictionary<string, string> Parameters { get; }
 
         public OrderDelivery(string uniqueCode, 
@@ -31,7 +31,7 @@ namespace Store
 
             this.UniqueCode = uniqueCode;
             this.Description = description;
-            this.Amount = amount;
+            this.Price = amount;
             this.Parameters = parameters;
         }
     }
