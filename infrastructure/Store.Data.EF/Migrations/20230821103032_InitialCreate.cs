@@ -37,11 +37,11 @@ namespace Store.Data.EF.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CellPhone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     DeliveryUniqueCode = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
-                    DeliveryDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeliveryDescription = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
                     DeliveryPrice = table.Column<decimal>(type: "money", nullable: false),
                     DeliveryParameters = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PaymentServiceName = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
-                    PaymentDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PaymentDescription = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
                     PaymentParameters = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>

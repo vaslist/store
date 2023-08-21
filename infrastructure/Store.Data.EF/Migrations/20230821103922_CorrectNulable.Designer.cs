@@ -11,8 +11,8 @@ using Store.Data.EF;
 namespace Store.Data.EF.Migrations
 {
     [DbContext(typeof(StoreDbContext))]
-    [Migration("20230821081133_FullTextSearch")]
-    partial class FullTextSearch
+    [Migration("20230821103922_CorrectNulable")]
+    partial class CorrectNulable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -97,7 +97,8 @@ namespace Store.Data.EF.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("DeliveryDescription")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("DeliveryParameters")
                         .HasColumnType("nvarchar(max)");
@@ -110,7 +111,8 @@ namespace Store.Data.EF.Migrations
                         .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("PaymentDescription")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("PaymentParameters")
                         .HasColumnType("nvarchar(max)");
