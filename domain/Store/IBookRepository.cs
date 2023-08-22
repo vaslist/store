@@ -2,9 +2,9 @@
 {
     public interface IBookRepository
     {
-        Book[] GetAllByIsbn(string isbn);
-        Book[] GetAllByTitleOrAuthor(string titlePart);
-        Book GetById(int id);
-        Book[] GetAllByIds(IEnumerable<int> bookIds);
+        Task<Book[]> GetAllByIsbnAsync(string isbn);
+        Task<Book[]> GetAllByTitleOrAuthorAsync(string titleOrAuthor);
+        Task<Book> GetByIdAsync(int id);
+        Task<Book[]> GetAllByIdsAsync(IEnumerable<int> bookIds);
     }
 }

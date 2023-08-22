@@ -2,8 +2,8 @@
 {
     public interface IOrderRepository
     {
-        public Order Create();
-        public Order GetById(int id);
-        void Update(Order order);
+        Task<Order> CreateAsync();
+        Task<Order> GetByIdAsync(int id);
+        Task UpdateAsync(Order order);
     }
 }

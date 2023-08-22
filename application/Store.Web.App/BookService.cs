@@ -15,17 +15,18 @@ namespace Store.Web.App
             this.bookRepository = bookRepository;
         }
 
-        public BookModel GetById(int id)
+        public async Task<BookModel> GetByIdAsync(int id)
         {
-            var book = bookRepository.GetById(id);
-            
+            var book = await bookRepository.GetByIdAsync(id);
+
             return Map(book);
         }
-        public IReadOnlyCollection<BookModel> GetAllByQuery(string query)
+
+        public async Task<IReadOnlyCollection<BookModel>> GetAllByQueryAsync(string query)
         {
             var books = Book.IsIsbn(query)
-                        ? bookRepository.GetAllByIsbn(query)
-                        : bookRepository.GetAllByTitleOrAuthor(query);
+                        ? await bookRepository.GetAllByIsbnAsync(query)
+                        : await bookRepository.GetAllByTitleOrAuthorAsync(query);
 
             return books.Select(Map)
                 .ToArray();
@@ -43,5 +44,7 @@ namespace Store.Web.App
                 Price = book.Price,
             };
         }
+
+        
     }
 }
