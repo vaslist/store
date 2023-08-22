@@ -55,5 +55,11 @@ namespace Store.YandexKassa
 
             return builder.Uri;
         }
+
+        public Task<Uri> StartSessionAsync(IReadOnlyDictionary<string, string> parameters, Uri returnUri)
+        {
+            var uri = StartSession(parameters, returnUri);
+            return Task.FromResult(uri);
+        }
     }
 }
