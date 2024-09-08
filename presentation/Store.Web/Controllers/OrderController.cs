@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Store.Web.Models;
-using System.Text.RegularExpressions;
 using Store.Contractors;
 using Store.Web.Contractors;
 using Store.Web.App;
@@ -36,7 +34,7 @@ namespace Store.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var (hasValue, orderModel) = await orderService.TryGetModeAsync();
+            var (hasValue, orderModel) = await orderService.TryGetModelAsync();
             if (hasValue)
                 return View(orderModel);
 
@@ -47,7 +45,7 @@ namespace Store.Web.Controllers
         public async Task<IActionResult> AddItem(int bookId, int count = 1)
         {
             await orderService.AddBookAsync(bookId, count);
-            return RedirectToAction("Index", "Book", new { id = bookId });
+            return RedirectToAction("Index", "Home", new { id = bookId });
         }
 
         [HttpPost]

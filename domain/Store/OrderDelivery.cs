@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Store
+﻿namespace Store
 {
     // реализация паттерна ValueObject
     // объект не может изменяться после того как мы его создали

@@ -1,6 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Net.Mail;
-using System.Text;
 
 namespace Store.Messages
 {

@@ -1,25 +1,20 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Store.Data.EF
 {
     public class DbContextFactory
     {
-        private readonly IHttpContextAccessor httpContextAccessor;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
         public DbContextFactory(IHttpContextAccessor httpContextAccessor)
         {
-            this.httpContextAccessor = httpContextAccessor;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public StoreDbContext Create(Type repositoryType)
         {
-            var services = httpContextAccessor.HttpContext.RequestServices;
+            var services = _httpContextAccessor.HttpContext.RequestServices;
 
             var dbContexts = services.GetService<Dictionary<Type, StoreDbContext>>();
             if (!dbContexts.ContainsKey(repositoryType))

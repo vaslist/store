@@ -1,11 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Store.Data.EF
 {
@@ -47,16 +42,22 @@ namespace Store.Data.EF
             return new Book[0];
         }
 
-        public async Task<Book[]> GetAllByTitleOrAuthorAsync(string titleOrAuthor)
+        public async Task<Book[]> GetAllByTitleOrAuthorAsync(string? titleOrAuthor)
         {
             var dbContext = dbContextFactory.Create(typeof(BookRepository));
-
-            var parameter = new SqlParameter("@titleOrAuthor", titleOrAuthor);
-            var dtos = await dbContext.Books
-                            .FromSqlRaw("SELECT * FROM Books WHERE CONTAINS((Author, Title), @titleOrAuthor)",
-                                        parameter)
-                            .ToArrayAsync();
-
+            BookDto[] dtos;
+            if (titleOrAuthor.IsNullOrEmpty())
+            {
+                dtos = await dbContext.Books.ToArrayAsync();
+            }
+            else
+            {
+                var parameter = new SqlParameter("@titleOrAuthor", titleOrAuthor);
+                dtos = await dbContext.Books
+                                .FromSqlRaw("SELECT * FROM Books WHERE CONTAINS((Author, Title), @titleOrAuthor)",
+                                            parameter)
+                                .ToArrayAsync();
+            }
             return dtos.Select(Book.Mapper.Map)
                             .ToArray();
         }
