@@ -1,4 +1,5 @@
-﻿using Store.Web.Models;
+﻿using Microsoft.AspNetCore.Http;
+using Store.Web.Models;
 using System.Text;
 
 namespace Store.Web
@@ -21,7 +22,7 @@ namespace Store.Web
                 writer.Write(value.OrderId);
                 writer.Write(value.TotalCount);
                 writer.Write(value.TotalPrice);
-                                
+
                 session.Set(key, stream.ToArray());
             }
         }
@@ -36,11 +37,7 @@ namespace Store.Web
                     var totalCount = reader.ReadInt32();
                     var tatalPrice = reader.ReadDecimal();
 
-                    value = new Cart(orderId)
-                    {
-                        TotalPrice = tatalPrice,
-                        TotalCount = totalCount
-                    };
+                    value = new Cart(orderId, totalCount, tatalPrice);
                 }
                 return true;
             }
