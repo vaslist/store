@@ -71,8 +71,11 @@ namespace Store.Web.Controllers
             (Order order, Cart cart) = GetOrCreateOrderAndCart();
 
             var book = bookRepository.GetById(bookId);
+            if (order.Items.TryGet(bookId, out OrderItem orderItem))
+                orderItem.Count += count;
+            else
+                order.Items.Add(bookId, book.Price, count);
 
-            order.AddOrUpdateItem(book, count);
             SaveOrderAndCart(order, cart);
 
             return RedirectToAction("Index", "Book", new { id = bookId });
@@ -83,7 +86,7 @@ namespace Store.Web.Controllers
         {
             (Order order, Cart cart) = GetOrCreateOrderAndCart();
 
-            order.GetItem(bookId).Count = count;
+            order.Items.Get(bookId).Count = count;
             SaveOrderAndCart(order, cart);
 
             return RedirectToAction("Index", "Order");
@@ -92,10 +95,8 @@ namespace Store.Web.Controllers
         private void SaveOrderAndCart(Order order, Cart cart)
         {
             orderRepository.Update(order);
-
-            cart.TotalCount = order.TotalCount;
-            cart.TotalPrice = order.TotalPrice;
-
+            cart = new Cart(order.Id, order.TotalCount, order.TotalPrice);
+            
             HttpContext.Session.Set(cart);
         }
 
@@ -110,7 +111,7 @@ namespace Store.Web.Controllers
             else
             {
                 order = orderRepository.Create();
-                cart = new Cart(order.Id);
+                cart = new Cart(order.Id,0,0m);
             }
             return (order, cart);
         }
@@ -119,7 +120,7 @@ namespace Store.Web.Controllers
         {
             (Order order, Cart cart) = GetOrCreateOrderAndCart();
 
-            order.GetItem(id).Count--;
+            order.Items.Get(id).Count--;
             SaveOrderAndCart(order, cart);
 
             return RedirectToAction("Index", "Book", new { id = id });
@@ -130,7 +131,7 @@ namespace Store.Web.Controllers
             (Order order, Cart cart) = GetOrCreateOrderAndCart();
 
 
-            order.RemoveItem(bookId);
+            order.Items.Remove(bookId);
             SaveOrderAndCart(order, cart);
 
             return RedirectToAction("Index", "Order");
