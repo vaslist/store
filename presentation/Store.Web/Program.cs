@@ -1,12 +1,9 @@
-using Store;
 using Store.Contractors;
 using Store.Messages;
 using Store.Web.App;
 using Store.Data.EF;
 using Store.Web.Contractors;
 using Store.YandexKassa;
-using System.Configuration;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Store.Web;
 
 var builder = WebApplication.CreateBuilder(args);

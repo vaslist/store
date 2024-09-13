@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Store.Web.Models;
-using System.Text.RegularExpressions;
 using Store.Contractors;
 using Store.Web.Contractors;
 using Store.Web.App;
