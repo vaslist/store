@@ -9,7 +9,7 @@ using Store.YandexKassa;
 // коммент 2.1
 // коммент 2.2
 // коммент 2.3
-// коммент 4.1
+// коммент 4.3
 
 var builder = WebApplication.CreateBuilder(args);
 
