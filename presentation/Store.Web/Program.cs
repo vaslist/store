@@ -6,6 +6,10 @@ using Store.YandexKassa;
 // коммент на русском
 // коммент 2
 // коммент 3
+// коммент 2.1
+// коммент 2.2
+// коммент 2.3
+
 var builder = WebApplication.CreateBuilder(args);
 
 // AddItem services to the container.
