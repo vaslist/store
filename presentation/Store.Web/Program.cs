@@ -3,7 +3,9 @@ using Store.Messages;
 //using Store.Web.App;
 using Store.Web.Contractors;
 using Store.YandexKassa;
-
+// коммент на русском
+// коммент 2
+// коммент 3
 var builder = WebApplication.CreateBuilder(args);
 
 // AddItem services to the container.
