@@ -2,7 +2,9 @@
 using System.Text.RegularExpressions;
 
 namespace Store;
-
+// ntrcn 1
+// ntrcn 2
+// ntrcn 3
 public class Book
 {
     private readonly BookDto dto;

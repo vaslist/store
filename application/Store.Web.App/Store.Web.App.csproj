@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-<<<<<<< HEAD
+
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
   </ItemGroup>
@@ -15,6 +15,4 @@
     <ProjectReference Include="..\..\domain\Store\Store.csproj" />
   </ItemGroup>
 
-=======
->>>>>>> 3675267 (Выделить OrderItemCollection)
 </Project>
