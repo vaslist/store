@@ -12,6 +12,10 @@ using Store.YandexKassa;
 // коммент 4.3
 // коммент 5.1
 // коммент 5.2- исправил
+// коммент 6-1
+// коммент 6-2
+// коммент 6-3
+// коммент 6-2
 
 var builder = WebApplication.CreateBuilder(args);
 
