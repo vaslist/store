@@ -1,4 +1,4 @@
-using Store.Contractors;
+п»їusing Store.Contractors;
 using Store.Messages;
 using Store.Web.App;
 using Store.Data.EF;
@@ -16,7 +16,7 @@ builder.Services.AddControllersWithViews(options=>
 });
 builder.Services.AddHttpContextAccessor();
 
-// получаем строку подключения из файла конфигурации
+// РїРѕР»СѓС‡Р°РµРј СЃС‚СЂРѕРєСѓ РїРѕРґРєР»СЋС‡РµРЅРёСЏ РёР· С„Р°Р№Р»Р° РєРѕРЅС„РёРіСѓСЂР°С†РёРё
 string connectionString = builder.Configuration.GetConnectionString("Store");
 builder.Services.AddEfRepositories(connectionString);
 
