@@ -127,8 +127,8 @@ namespace Store.Web.App
 
         public async Task<OrderModel> SendConfirmationAsync(string cellPhone)
         {
-            var order = await GetOrderAsync();
-            var model = await MapAsync(order);
+            Order order = await GetOrderAsync();
+            OrderModel model = await MapAsync(order);
 
             if (TryFormatPhone(cellPhone, out string formatedPhone))
             {

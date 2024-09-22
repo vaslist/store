@@ -2,13 +2,13 @@
 {
     public class PostamateDeliveryService : IDeliveryService
     {
-        private static IReadOnlyDictionary<string, string> cities = new Dictionary<string, string>
+        private static readonly IReadOnlyDictionary<string, string> cities = new Dictionary<string, string>
         {
             {"1","Москва" },
             {"2","Ессентуки" }
         };
 
-        private static IReadOnlyDictionary<string, IReadOnlyDictionary<string, string>> postamates = new Dictionary<string, IReadOnlyDictionary<string, string>>
+        private static readonly IReadOnlyDictionary<string, IReadOnlyDictionary<string, string>> postamates = new Dictionary<string, IReadOnlyDictionary<string, string>>
         {
             {
                 "1",
@@ -39,29 +39,33 @@
                        .AddParameter("orderId", order.Id.ToString())
                        .AddField(new SelectionField("Город", "city", "1", cities));
         }
-        public Form NextForm(int step, IReadOnlyDictionary<string, string> values)
+        public Form NextForm(int step, IReadOnlyDictionary<string, string> value)
         {
             if (step == 1)
             {
-                if (values["city"] == "1")
+                if (value["city"] == "1")
                 {
-                    return Form.CreateNext(Name, 2, values)
+                    return Form.CreateNext(Name, 2, value)
                                .AddField(new SelectionField("Постамат", "postamate", "1", postamates["1"]));
                 }
-                else if (values["city"] == "2")
+                else if (value["city"] == "2")
                 {
-                    return Form.CreateNext(Name, 2, values)
+                    return Form.CreateNext(Name, 2, value)
                                .AddField(new SelectionField("Постамат", "postamate", "4", postamates["2"]));
                 }
                 else
+                {
                     throw new InvalidOperationException("Invalid postamate city.");
+                }
             }
             else if (step == 2)
             {
-                return Form.CreateLast(Name, 3, values);
+                return Form.CreateLast(Name, 3, value);
             }
             else
+            {
                 throw new InvalidOperationException("Invalid postamate step.");
+            }
         }
 
         public OrderDelivery GetDelivery(Form form)
